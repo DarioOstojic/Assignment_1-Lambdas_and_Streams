@@ -28,6 +28,8 @@ public class Main {
         long timeMicro = (endTime - startTime) / 1000;
         System.out.println("Filtered in: " + timeMicro + " microseconds");
 
+        System.out.println("Amount of persons that matches the criteria: " + filteredPersons.size());
+
         /*
         // Additional filters with specific criteria.
         // Filter for persons older than 21.
