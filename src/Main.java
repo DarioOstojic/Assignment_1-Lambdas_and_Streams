@@ -16,7 +16,7 @@ public class Main {
                 .collect(Collectors.toList());
 
         // Applying the created filter to the generated list of persons.
-        List<Person> filteredPersons = personFilter.filterPersons(persons, 30, "Teacher", Gender.FEMALE);
+        List<Person> filteredPersons = personFilter.filterPersons(persons, 60, "Teacher", Gender.FEMALE);
 
         /*
         // Additional filters with specific criteria.
