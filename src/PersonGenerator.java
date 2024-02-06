@@ -20,10 +20,11 @@ public class PersonGenerator {
         Random random = new Random();
 
         for (int i = 0; i < count; i++) {
-            int age = random.nextInt(50) + 20; // Random age between 20 and 69
-            String name = generateRandomName();
+            int age = random.nextInt(18, 65); // Random age between 18 and 65
+            String[] nameWithGender = generateRandomNameWithGender();
+            String name = nameWithGender[0];
+            Gender gender = Gender.valueOf(nameWithGender[1]);
             String occupation = generateRandomOccupation();
-            Gender gender = random.nextBoolean() ? Gender.MALE : Gender.FEMALE;
 
             Person person = new Person(age, name, occupation, gender);
             persons.add(person);
@@ -33,20 +34,39 @@ public class PersonGenerator {
     }
 
     // Helper method to generate a random name
-    private static String generateRandomName() {
-        String[] names = {"Alice", "Bob", "Charlie", "David", "Emma", "Frank", "Grace", "Henry", "Louise", "Jessica", "Michael",
-                "Sarah", "Miranda","Harvey", "Lucas", "Robert", "Kate", "John", "Peter","Ethan", "Olivia", "Liam",
-                "Noah", "Ava", "Lucas", "Sophia", "Jackson", "Isabella", "Aiden", "Mia", "Caden", "Amelia",
-                "Grayson", "Harper", "Mason", "Evelyn", "Elijah", "Abigail", "Logan", "Ella", "Carter", "Scarlett",
-                "Caleb", "Lily", "Jackson", "Aria", "Lucas", "Grace", "Oliver", "Chloe", "Sebastian", "Penelope", "Henry",
-                "Layla", "Owen", "Zoey", "Wyatt", "Aurora", "Samuel", "Addison", "Leo", "Brooklyn", "Gabriel", "Hannah",
-                "Julian", "Lillian", "Levi", "Victoria", "Dylan", "Natalie", "Zachary", "Samantha", "Anthony", "Stella",
-                "Joseph", "Aurora", "Isaac", "Claire", "Lincoln", "Lucy", "Joshua", "Anna", "Caleb", "Leah", "Andrew", "Savannah",
-                "Nathan", "Zoe", "Hunter", "Nora", "Aaron", "Eleanor", "David", "Hazel", "Daniel", "Violet", "Matthew", "Audrey",
-                "Elijah", "Skylar", "James", "Paisley", "Benjamin", "Addison", "Christopher", "Bella", "Jonathan", "Caroline",
-                "Samuel", "Kennedy", "Julian", "Naomi", "Jack", "Genesis", "Wyatt", "Sadie", "Jayden", "Piper"};
+    private static String[] generateRandomNameWithGender() {
+        String[][] namesWithGender = {
+                {"Alice", "FEMALE"}, {"Bob", "MALE"}, {"Charlie", "MALE"}, {"David", "MALE"},
+                {"Emma", "FEMALE"}, {"Frank", "MALE"}, {"Grace", "FEMALE"}, {"Henry", "MALE"},
+                {"Louise", "FEMALE"}, {"Jessica", "FEMALE"}, {"Michael", "MALE"}, {"Sarah", "FEMALE"},
+                {"Miranda", "FEMALE"}, {"Harvey", "MALE"}, {"Lucas", "MALE"}, {"Robert", "MALE"},
+                {"Kate", "FEMALE"}, {"John", "MALE"}, {"Peter", "MALE"}, {"Ethan", "MALE"},
+                {"Olivia", "FEMALE"}, {"Liam", "MALE"}, {"Noah", "MALE"}, {"Ava", "FEMALE"},
+                {"Sophia", "FEMALE"}, {"Jackson", "MALE"}, {"Isabella", "FEMALE"}, {"Aiden", "MALE"},
+                {"Mia", "FEMALE"}, {"Caden", "MALE"}, {"Amelia", "FEMALE"}, {"Grayson", "MALE"},
+                {"Harper", "FEMALE"}, {"Mason", "MALE"}, {"Evelyn", "FEMALE"}, {"Elijah", "MALE"},
+                {"Abigail", "FEMALE"}, {"Logan", "MALE"}, {"Ella", "FEMALE"}, {"Carter", "MALE"},
+                {"Scarlett", "FEMALE"}, {"Caleb", "MALE"}, {"Lily", "FEMALE"}, {"Aria", "FEMALE"},
+                {"Oliver", "MALE"}, {"Chloe", "FEMALE"}, {"Sebastian", "MALE"}, {"Penelope", "FEMALE"},
+                {"Henry", "MALE"}, {"Layla", "FEMALE"}, {"Owen", "MALE"}, {"Zoey", "FEMALE"},
+                {"Wyatt", "MALE"}, {"Aurora", "FEMALE"}, {"Samuel", "MALE"}, {"Addison", "FEMALE"},
+                {"Leo", "MALE"}, {"Brooklyn", "FEMALE"}, {"Gabriel", "MALE"}, {"Hannah", "FEMALE"},
+                {"Julian", "MALE"}, {"Lillian", "FEMALE"}, {"Levi", "MALE"}, {"Victoria", "FEMALE"},
+                {"Dylan", "MALE"}, {"Natalie", "FEMALE"}, {"Zachary", "MALE"}, {"Samantha", "FEMALE"},
+                {"Anthony", "MALE"}, {"Stella", "FEMALE"}, {"Joseph", "MALE"}, {"Aurora", "FEMALE"},
+                {"Isaac", "MALE"}, {"Claire", "FEMALE"}, {"Lincoln", "MALE"}, {"Lucy", "FEMALE"},
+                {"Joshua", "MALE"}, {"Anna", "FEMALE"}, {"Savannah", "FEMALE"}, {"Nathan", "MALE"},
+                {"Zoe", "FEMALE"}, {"Hunter", "MALE"}, {"Nora", "FEMALE"}, {"Aaron", "MALE"},
+                {"Eleanor", "FEMALE"}, {"Hazel", "FEMALE"}, {"Daniel", "MALE"}, {"Violet", "FEMALE"},
+                {"Matthew", "MALE"}, {"Audrey", "FEMALE"}, {"Elijah", "MALE"}, {"Skylar", "FEMALE"},
+                {"James", "MALE"}, {"Paisley", "FEMALE"}, {"Benjamin", "MALE"}, {"Christopher", "MALE"},
+                {"Jonathan", "MALE"}, {"Caroline", "FEMALE"}, {"Samuel", "MALE"}, {"Kennedy", "FEMALE"},
+                {"Julian", "MALE"}, {"Naomi", "FEMALE"}, {"Jack", "MALE"}, {"Genesis", "FEMALE"},
+                {"Wyatt", "MALE"}, {"Sadie", "FEMALE"}, {"Jayden", "MALE"}, {"Piper", "FEMALE"}
+        };
+
         Random random = new Random();
-        return names[random.nextInt(names.length)];
+        return namesWithGender[random.nextInt(namesWithGender.length)];
     }
 
     // Helper method to generate a random occupation
