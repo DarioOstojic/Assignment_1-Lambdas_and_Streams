@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -5,9 +6,10 @@ public class Main {
     public static void main(String[] args) {
 
         // Generating a list of 100 persons using the PersonGenerator.
-        PersonGenerator personGenerator = new PersonGenerator(1000);
+        PersonGenerator personGenerator = new PersonGenerator(20000);
         List<Person> persons = personGenerator.getPersons();
         System.out.println("Length of person list: " + persons.size());
+
 
         // Creating a PersonFilter instance using a lambda expression to filter persons based on age, occupation, and gender.
         PersonFilter personFilter = (people, age, occupation, gender) -> people.stream()
@@ -50,10 +52,16 @@ public class Main {
         List<Person> personsFemales = onlyFemales.filterPersons(persons);
         */
 
+    }
 
-        // Display the generated persons
-        for (Person person : filteredPersons) {
-            System.out.println(person);
+    // Custom filter using loops
+    private static List<Person> filterPersons(List<Person> persons, int age, String occupation, Gender gender) {
+        List<Person> filteredList = new ArrayList<>();
+        for (Person person : persons) {
+            if ( person.getAge()<age && person.getOccupation().equals(occupation) && person.getGender().equals(gender)) {
+                filteredList.add(person);
+            }
         }
+        return filteredList;
     }
 }
