@@ -5,8 +5,9 @@ public class Main {
     public static void main(String[] args) {
 
         // Generating a list of 100 persons using the PersonGenerator.
-        PersonGenerator personGenerator = new PersonGenerator(100);
+        PersonGenerator personGenerator = new PersonGenerator(1000);
         List<Person> persons = personGenerator.getPersons();
+        System.out.println("Length of person list: " + persons.size());
 
         // Creating a PersonFilter instance using a lambda expression to filter persons based on age, occupation, and gender.
         PersonFilter personFilter = (people, age, occupation, gender) -> people.stream()
@@ -15,8 +16,16 @@ public class Main {
                 .filter(person -> person.getGender().equals(gender))
                 .collect(Collectors.toList());
 
+        // Record the start time
+        long startTime = System.nanoTime();
+
         // Applying the created filter to the generated list of persons.
-        List<Person> filteredPersons = personFilter.filterPersons(persons, 30, "Teacher", Gender.FEMALE);
+        List<Person> filteredPersons = personFilter.filterPersons(persons, 60, "Teacher", Gender.FEMALE);
+
+        // Record the end time
+        long endTime = System.nanoTime();
+        long timeMicro = (endTime - startTime) / 1000;
+        System.out.println("Filtered in: " + timeMicro + " microseconds");
 
         /*
         // Additional filters with specific criteria.
