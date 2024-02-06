@@ -14,19 +14,25 @@ public class PersonGenerator {
         return persons;
     }
 
-    // Method to generate a list of Person objects with random attributes
-    public static List<Person> generatePersonList(int count) {
-        List<Person> persons = new ArrayList<>();
+    public Person generatePerson() {
         Random random = new Random();
+        int age = random.nextInt(18, 65); // Random age between 18 and 65
+        String[] nameWithGender = generateRandomNameWithGender();
+        String name = nameWithGender[0];
+        Gender gender = Gender.valueOf(nameWithGender[1]);
+        String occupation = generateRandomOccupation();
+
+        Person person = new Person(age, name, occupation, gender);
+
+        return person;
+    }
+
+    // Method to generate a list of Person objects with random attributes
+    private List<Person> generatePersonList(int count) {
+        List<Person> persons = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            int age = random.nextInt(18, 65); // Random age between 18 and 65
-            String[] nameWithGender = generateRandomNameWithGender();
-            String name = nameWithGender[0];
-            Gender gender = Gender.valueOf(nameWithGender[1]);
-            String occupation = generateRandomOccupation();
-
-            Person person = new Person(age, name, occupation, gender);
+            Person person = generatePerson();
             persons.add(person);
         }
 
@@ -34,7 +40,7 @@ public class PersonGenerator {
     }
 
     // Helper method to generate a random name
-    private static String[] generateRandomNameWithGender() {
+    private String[] generateRandomNameWithGender() {
         String[][] namesWithGender = {
                 {"Alice", "FEMALE"}, {"Bob", "MALE"}, {"Charlie", "MALE"}, {"David", "MALE"},
                 {"Emma", "FEMALE"}, {"Frank", "MALE"}, {"Grace", "FEMALE"}, {"Henry", "MALE"},
@@ -70,7 +76,7 @@ public class PersonGenerator {
     }
 
     // Helper method to generate a random occupation
-    private static String generateRandomOccupation() {
+    private String generateRandomOccupation() {
         String[] occupations = {"Engineer", "Teacher", "Doctor", "Painter", "Programmer", "Writer", "Singer", "Astronaut",
                                 "Chef", "Scientist", "Pilot", "Librarian", "Athlete", "Psychologist", "Photographer",
                                 "Architect", "Firefighter", "Lawyer", "Dancer", "Electrician", "Journalist", "Veterinarian"};

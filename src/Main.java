@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -18,11 +19,20 @@ public class Main {
         // Applying the created filter to the generated list of persons.
         List<Person> filteredPersons = personFilter.filterPersons(persons, 60, "Teacher", Gender.FEMALE);
 
+
+        Predicate<Person> onlyOlderThan21 = person -> person.getAge() > 21;
+        List<Person> personsOlderThan21 = persons.stream()
+                .filter(onlyOlderThan21)
+                .collect(Collectors.toList());
+
+        Person randomPerson = personGenerator.generatePerson();
+        boolean result = onlyOlderThan21.test(randomPerson);
+
         /*
         // Additional filters with specific criteria.
         // Filter for persons older than 21.
         PersonFilter onlyOlderThan21 = people -> people.stream()
-                .filter(person -> person.getAge() < 21)
+                .filter(person -> person.getAge() > 21)
                 .collect(Collectors.toList());
 
         // Filter for persons with the occupation "Teacher".
