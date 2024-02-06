@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -5,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Generating a list of 100 persons using the PersonGenerator.
-        PersonGenerator personGenerator = new PersonGenerator(1000);
+        PersonGenerator personGenerator = new PersonGenerator(10000);
         List<Person> persons = personGenerator.getPersons();
         System.out.println("Length of person list: " + persons.size());
 
@@ -20,7 +21,7 @@ public class Main {
         long startTime = System.nanoTime();
 
         // Applying the created filter to the generated list of persons.
-        List<Person> filteredPersons = personFilter.filterPersons(persons, 60, "Teacher", Gender.FEMALE);
+        List<Person> filteredPersons = personFilter.filterPersons(persons, 30, "Teacher", Gender.FEMALE);
 
         // Record the end time
         long endTime = System.nanoTime();
@@ -49,11 +50,19 @@ public class Main {
         List<Person> personsTeachers = onlyTeachers.filterPersons(persons);
         List<Person> personsFemales = onlyFemales.filterPersons(persons);
         */
-
-
-        // Display the generated persons
-        for (Person person : filteredPersons) {
-            System.out.println(person);
-        }
     }
+
+    /*
+    // Filter for persons with the gender "Female", occupation "Teacher" and younger than 60
+    // Method used to measure performance using loops
+    private static List<Person> filterPersons (List<Person> persons) {
+        List<Person> filteredList= new ArrayList<>();
+        for (Person person : persons) {
+            if ((person.getAge() < 60) && (person.getOccupation().equals("Teacher") && (person.getGender().equals(Gender.FEMALE)))){
+                filteredList.add(person);
+            }
+        }
+        return filteredList;
+    }
+    */
 }
