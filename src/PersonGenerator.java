@@ -34,14 +34,26 @@ public class PersonGenerator {
 
     // Helper method to generate a random name
     private static String generateRandomName() {
-        String[] names = {"Alice", "Bob", "Charlie", "David", "Emma", "Frank", "Grace", "Henry"};
+        String[] names = {"Alice", "Bob", "Charlie", "David", "Emma", "Frank", "Grace", "Henry", "Louise", "Jessica", "Michael",
+                "Sarah", "Miranda","Harvey", "Lucas", "Robert", "Kate", "John", "Peter","Ethan", "Olivia", "Liam",
+                "Noah", "Ava", "Lucas", "Sophia", "Jackson", "Isabella", "Aiden", "Mia", "Caden", "Amelia",
+                "Grayson", "Harper", "Mason", "Evelyn", "Elijah", "Abigail", "Logan", "Ella", "Carter", "Scarlett",
+                "Caleb", "Lily", "Jackson", "Aria", "Lucas", "Grace", "Oliver", "Chloe", "Sebastian", "Penelope", "Henry",
+                "Layla", "Owen", "Zoey", "Wyatt", "Aurora", "Samuel", "Addison", "Leo", "Brooklyn", "Gabriel", "Hannah",
+                "Julian", "Lillian", "Levi", "Victoria", "Dylan", "Natalie", "Zachary", "Samantha", "Anthony", "Stella",
+                "Joseph", "Aurora", "Isaac", "Claire", "Lincoln", "Lucy", "Joshua", "Anna", "Caleb", "Leah", "Andrew", "Savannah",
+                "Nathan", "Zoe", "Hunter", "Nora", "Aaron", "Eleanor", "David", "Hazel", "Daniel", "Violet", "Matthew", "Audrey",
+                "Elijah", "Skylar", "James", "Paisley", "Benjamin", "Addison", "Christopher", "Bella", "Jonathan", "Caroline",
+                "Samuel", "Kennedy", "Julian", "Naomi", "Jack", "Genesis", "Wyatt", "Sadie", "Jayden", "Piper"};
         Random random = new Random();
         return names[random.nextInt(names.length)];
     }
 
     // Helper method to generate a random occupation
     private static String generateRandomOccupation() {
-        String[] occupations = {"Engineer", "Teacher", "Doctor", "Artist", "Programmer", "Writer"};
+        String[] occupations = {"Engineer", "Teacher", "Doctor", "Painter", "Programmer", "Writer", "Singer", "Astronaut",
+                                "Chef", "Scientist", "Pilot", "Librarian", "Athlete", "Psychologist", "Photographer",
+                                "Architect", "Firefighter", "Lawyer", "Dancer", "Electrician", "Journalist", "Veterinarian"};
         Random random = new Random();
         return occupations[random.nextInt(occupations.length)];
     }
