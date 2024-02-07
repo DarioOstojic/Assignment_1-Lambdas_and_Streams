@@ -12,15 +12,5 @@ public interface PersonFilter {
     default boolean isAdultFemaleProgrammers(Person person) {
         return person.getAge() >= 18 && person.getOccupation().equals("Programmer") && person.getGender() == Gender.FEMALE;
     }
-
 }
 
-/*
-
-// Previous version of the Functional Interface supporting multiple instances with no specific criteria.
-@FunctionalInterface
-public interface PersonFilter {
-    List<Person> filterPersons(List<Person> persons);
-}
-
-*/
