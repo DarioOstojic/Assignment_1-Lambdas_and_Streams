@@ -1,25 +1,27 @@
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
         // Generating a list of persons using the PersonGenerator.
         PersonGenerator personGenerator = new PersonGenerator(20000);
-        List<Person> persons = personGenerator.getPersons();
-        System.out.println("Length of person list: " + persons.size());
+        List<Person> randomPersons = personGenerator.getPersons();
+        System.out.println("Length of person list: " + randomPersons.size());
+        Person randomPerson = personGenerator.generatePerson();
 
-        //Lambda expression with no parameters
+        // Lambda expression with no parameters
         DatePrinter currentWorkingDate = (() -> System.out.println("Current working date is " + new Date()));
         currentWorkingDate.printCurrentDate();
 
-        //Lambda expression with one parameter
+        // Lambda expression with one parameter
         Occupation jobOccupation = person -> person.getOccupation();
-        String personJobOccupation = jobOccupation.getJobOccupation(personGenerator.generatePerson());
+        String personJobOccupation = jobOccupation.getJobOccupation(randomPerson);
         System.out.println(personJobOccupation);
 
-        //Lambda expression with several parameters
+        // Lambda expression with several parameters
         PersonFilter filterByAgeOccupationGender = (people, age, occupation, gender) -> people.stream()
                 .filter(person -> person.getAge() < age)
                 .filter(person -> person.getOccupation().equals(occupation))
@@ -27,12 +29,19 @@ public class Main {
                 .collect(Collectors.toList());
 
         // Applying the filterByAgeOccupationGender to the generated list of persons.
-        List<Person> filteredPersons = filterByAgeOccupationGender.filterPersons(persons, 60, "Teacher", Gender.FEMALE);
+        List<Person> filteredPersons = filterByAgeOccupationGender.filterPersons(randomPersons, 60, "Teacher", Gender.FEMALE);
 
-        // Display the generated persons
+        // Display the generated persons by age, occupation and gender
         for (Person person : filteredPersons) {
             System.out.println(person);
         }
+
+        // Predicate example
+        Predicate<Person> femaleProgrammersAbove18 =
+                person -> person.getAge() >= 18
+                        && person.getOccupation().equals("Programmer")
+                        && person.getGender() == Gender.FEMALE;
+        boolean result = femaleProgrammersAbove18.test(randomPerson);
 
         // Record the start time
         long startTime = System.nanoTime();
