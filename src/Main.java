@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        // Generating a list of persons using the PersonGenerator.
+        // Generating a list of persons through using the PersonGenerator.
         PersonGenerator personGenerator = new PersonGenerator(20000);
         List<Person> randomPersons = personGenerator.getPersons();
         System.out.println("Length of person list: " + randomPersons.size());
