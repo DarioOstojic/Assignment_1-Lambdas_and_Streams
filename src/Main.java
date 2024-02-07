@@ -1,12 +1,12 @@
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-
         // Generating a list of persons using the PersonGenerator.
-        PersonGenerator personGenerator = new PersonGenerator(1000);
+        PersonGenerator personGenerator = new PersonGenerator(20000);
         List<Person> persons = personGenerator.getPersons();
         System.out.println("Length of person list: " + persons.size());
 
@@ -41,9 +41,16 @@ public class Main {
         long endTime = System.nanoTime();
         long timeMicro = (endTime - startTime) / 1000;
         System.out.println("Filtered in: " + timeMicro + " microseconds");
+    }
 
-
-
-
+    // Custom filter using loops
+    private static List<Person> filterPersons(List<Person> persons, int age, String occupation, Gender gender) {
+        List<Person> filteredList = new ArrayList<>();
+        for (Person person : persons) {
+            if ( person.getAge()<age && person.getOccupation().equals(occupation) && person.getGender().equals(gender)) {
+                filteredList.add(person);
+            }
+        }
+        return filteredList;
     }
 }
