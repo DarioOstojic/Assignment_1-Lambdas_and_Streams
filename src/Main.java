@@ -63,29 +63,33 @@ public class Main {
         List<Person> listOf100Persons = personGenerator.generatePersonList(100);
         List<Person> listOf1000Persons = personGenerator.generatePersonList(1000);
         List<Person> listOf10000Persons = personGenerator.generatePersonList(10000);
+        List<Person> listOf20000Persons = personGenerator.generatePersonList(20000);
+        List<Person> listOf50000Persons = personGenerator.generatePersonList(50000);
         List<Person> listOf100000Persons = personGenerator.generatePersonList(100000);
 
 
         System.out.printf("%nMeasuring performance of imperative vs declarative approach%n");
+
         // Displaying header
         System.out.printf("%n%-20s%-25s%-20s%n", "Elements in list", "Declarative approach", "Imperative approach");
 
-        for (List<Person> list : Arrays.asList(listOf10Persons, listOf100Persons, listOf1000Persons, listOf10000Persons, listOf100000Persons)) {
+        // Table content
+        for (List<Person> list : Arrays.asList(listOf10Persons, listOf100Persons, listOf1000Persons, listOf10000Persons, listOf20000Persons, listOf50000Persons, listOf100000Persons)) {
             System.out.printf("%-20d", list.size()); // Displaying the number of elements in the list
 
             // Declarative approach
             long startTime = System.nanoTime(); // Record the start time
-            List<Person> filteredList = filterByAgeOccupationGender.filterPersons(list, 60, "Teacher", Gender.FEMALE);
+            List<Person> filteredList = filterByAgeOccupationGender.filterPersons(list, 30, "Teacher", Gender.FEMALE);
             long endTime = System.nanoTime(); // Record the end time
             long timeMicro = (endTime - startTime) / 1000; // Calculate the difference
-            System.out.printf("%-25d", timeMicro);
+            System.out.printf("%-25s", timeMicro + " μs");
 
             // Imperative approach
             startTime = System.nanoTime(); // Record the start time
-            filteredList = filterPersons(list, 60, "Teacher", Gender.FEMALE);
+            filteredList = filterPersons(list, 30, "Teacher", Gender.FEMALE);
             endTime = System.nanoTime(); // Record the end time
             timeMicro = (endTime - startTime) / 1000; // Calculate the difference
-            System.out.printf("%-20d%n", timeMicro);
+            System.out.printf("%-20s%n", timeMicro + " μs");
         }
     }
 
