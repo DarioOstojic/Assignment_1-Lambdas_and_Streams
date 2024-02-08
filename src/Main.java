@@ -64,7 +64,7 @@ public class Main {
         // This code shows how use filter intermediate operation
         List<Person> filterOperation = randomPersons.stream()
                 .filter(person -> person.getAge() < 20)
-                .toList();
+                .collect(Collectors.toList());
         // Display the generated persons by age, occupation and gender
         System.out.printf("%nThis are the persons obtained by filtering a list of 200 random persons by age (<20):%n");
         System.out.printf("%-10s%-20s%-20s%-15s%n", "Age", "Name", "Occupation", "Gender");
@@ -88,10 +88,11 @@ public class Main {
             }
 
         // This code shows how use reduce intermediate operation
-        System.out.printf("%n%nThis is the result of accumulating 200 person's ages using the reduce terminal operation:%n");
         int reduceOperation = randomPersons.stream()
                 .map(person -> person.getAge())
                 .reduce(0, (age1, age2) -> Integer.sum(age1, age2));
+        // Display the result
+        System.out.printf("%n%nThis is the result of accumulating 200 person's ages using the reduce terminal operation:%n");
         System.out.println(reduceOperation);
 
 
