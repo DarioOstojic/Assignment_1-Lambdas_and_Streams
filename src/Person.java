@@ -28,12 +28,13 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "age=" + age +
-                ", name='" + name + '\'' +
-                ", occupation='" + occupation + '\'' +
-                ", gender=" + gender +
-                '}';
+        return String.format(
+                "%-10d%-20s%-20s%-15s",
+                age,
+                name,
+                occupation,
+                gender
+        );
     }
 
 }

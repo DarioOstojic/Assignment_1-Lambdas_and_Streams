@@ -1,4 +1,4 @@
 @FunctionalInterface
 public interface Occupation {
-    String getJobOccupation(Person person);
+    String getOccupation(Person person);
 }
