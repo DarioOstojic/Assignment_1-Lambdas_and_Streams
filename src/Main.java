@@ -87,7 +87,7 @@ public class Main {
                 System.out.printf("%s - ", name);
             }
 
-        // This code shows how use reduce intermediate operation
+        // This code shows how use reduce terminal operation
         int reduceOperation = randomPersons.stream()
                 .map(person -> person.getAge())
                 .reduce(0, (age1, age2) -> Integer.sum(age1, age2));
