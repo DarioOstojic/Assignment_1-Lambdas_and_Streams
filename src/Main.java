@@ -22,8 +22,8 @@ public class Main {
         // Creating an instance of PersonGenerator.
         PersonGenerator personGenerator = new PersonGenerator();
 
-        // Generating a list of 500 random persons through using the PersonGenerator.
-        List<Person> randomPersons = personGenerator.generatePersonList(300);
+        // Generating a list of 200 random persons through using the PersonGenerator.
+        List<Person> randomPersons = personGenerator.generatePersonList(200);
 
         // Generating a random person through using the PersonGenerator.
         Person randomPerson = personGenerator.generatePerson();
@@ -46,11 +46,11 @@ public class Main {
                 .filter(person -> person.getGender().equals(gender))
                 .collect(Collectors.toList());
 
-        // Applying the filterByAgeOccupationGender to the randomly generated list of 300 persons.
-        List<Person> filteredPersons = filterByAgeOccupationGender.filterPersons(randomPersons, 45, "Teacher", Gender.FEMALE);
+        // Applying the filterByAgeOccupationGender to the randomly generated list of 200 persons.
+        List<Person> filteredPersons = filterByAgeOccupationGender.filterPersons(randomPersons, 40, "Teacher", Gender.FEMALE);
 
         // Display the generated persons by age, occupation and gender
-        System.out.printf("%nThis are the persons obtained by filtering a list of 300 random persons using lambda expressions with multiple parameters:%n");
+        System.out.printf("%nThis are the persons obtained by filtering a list of 200 random persons using lambda expressions with multiple parameters:%n");
         System.out.printf("%-10s%-20s%-20s%-15s%n", "Age", "Name", "Occupation", "Gender");
         System.out.println("---------------------------------------------------------");
         if (filteredPersons.isEmpty()) {
@@ -66,7 +66,7 @@ public class Main {
                 .filter(person -> person.getAge() < 20)
                 .toList();
         // Display the generated persons by age, occupation and gender
-        System.out.printf("%nThis are the persons obtained by filtering a list of 300 random persons by age (<20):%n");
+        System.out.printf("%nThis are the persons obtained by filtering a list of 200 random persons by age (<20):%n");
         System.out.printf("%-10s%-20s%-20s%-15s%n", "Age", "Name", "Occupation", "Gender");
         System.out.println("---------------------------------------------------------");
         if (filteredPersons.isEmpty()) {
@@ -82,13 +82,13 @@ public class Main {
                 .map(person -> person.getName())
                 .toList();
         // Display the names of teh generated list
-        System.out.printf("%n%nThis are the names obtained by mapping a list of 300 random persons to their names:%n");
+        System.out.printf("%n%nThis are the names obtained by mapping a list of 200 random persons to their names:%n");
         for (String name : mapOperation) {
                 System.out.printf("%s - ", name);
             }
 
         // This code shows how use reduce intermediate operation
-        System.out.printf("%n%nThis is the result of accumulating all persons ages using the reduce terminal operation:%n");
+        System.out.printf("%n%nThis is the result of accumulating 200 person's ages using the reduce terminal operation:%n");
         int reduceOperation = randomPersons.stream()
                 .map(person -> person.getAge())
                 .reduce(0, (age1, age2) -> Integer.sum(age1, age2));
