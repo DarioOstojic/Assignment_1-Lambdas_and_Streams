@@ -6,8 +6,8 @@ public class PersonGenerator {
 
     List<Person> persons;
 
-    public PersonGenerator (int numberOfPeople) {
-        this.persons = generatePersonList(numberOfPeople);
+    public PersonGenerator () {
+        this.persons = new ArrayList<>();
     }
 
     public List<Person> getPersons() {
@@ -28,14 +28,12 @@ public class PersonGenerator {
     }
 
     // Method to generate a list of Person objects with random attributes
-    private List<Person> generatePersonList(int count) {
-        List<Person> persons = new ArrayList<>();
-
-        for (int i = 0; i < count; i++) {
+    public List<Person> generatePersonList(int numberOfPeople) {
+        persons = new ArrayList<>();
+        for (int i = 0; i < numberOfPeople; i++) {
             Person person = generatePerson();
             persons.add(person);
         }
-
         return persons;
     }
 
@@ -78,8 +76,8 @@ public class PersonGenerator {
     // Helper method to generate a random occupation
     private String generateRandomOccupation() {
         String[] occupations = {"Engineer", "Teacher", "Doctor", "Painter", "Programmer", "Writer", "Singer", "Astronaut",
-                                "Chef", "Scientist", "Pilot", "Librarian", "Athlete", "Psychologist", "Photographer",
-                                "Architect", "Firefighter", "Lawyer", "Dancer", "Electrician", "Journalist", "Veterinarian"};
+                "Chef", "Scientist", "Pilot", "Librarian", "Athlete", "Psychologist", "Photographer",
+                "Architect", "Firefighter", "Lawyer", "Dancer", "Electrician", "Journalist", "Veterinarian"};
         Random random = new Random();
         return occupations[random.nextInt(occupations.length)];
     }
